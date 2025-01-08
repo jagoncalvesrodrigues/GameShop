@@ -23,5 +23,15 @@ export const GlobalStyles = createGlobalStyle`
         text-decoration: none;
         color: inherit;
     }
+    body{
+        font-family: "Inter", serif;
+        padding: 32px 24px;
+
+        @media screen and (width>=1124px){
+            padding: 32px 180px;
+        }
+
+        background-color: #161A1E;
+    }
 
 `;
