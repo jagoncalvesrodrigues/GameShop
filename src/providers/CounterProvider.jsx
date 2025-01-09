@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { CounterContext } from '../contexts/CounterContent';
 
 const CounterProvider = ({ children }) => {
-	const [counter, setCounter] = useState(0);
+	const [cart, setCart] = useState([]);
 
 	return (
-		<CounterContext.Provider value={{ counter, setCounter }}>
+		<CounterContext.Provider value={{ cart, setCart }}>
 			{children}
 		</CounterContext.Provider>
 	);

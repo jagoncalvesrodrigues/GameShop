@@ -20,8 +20,12 @@ import {
 
 const GameStore = () => {
 	const [togglePLat, setTogglePlat] = useState(false);
+	const [selectedPlat, setSelectedPlat] = useState([]);
 
-	const plattforms = ['PC', 'Play Station 5', 'Play Station 4'];
+	console.log(selectedPlat);
+
+	const gamesFiltered = filtergames(GAMES, selectedPlat);
+	const platforms = ['PC', 'PS5', 'PS4'];
 	console.log(togglePLat);
 
 	return (
@@ -48,15 +52,21 @@ const GameStore = () => {
 							alt=''
 						/>
 					</StyledSecondTitleBox>
-					{plattforms.map(plattform => (
-						<StyledCheckboxLabel $togglePlat={togglePLat} key={plattform}>
-							<StyledPlattformInput type='checkbox' />
-							{plattform}
+					{platforms.map(platform => (
+						<StyledCheckboxLabel $togglePlat={togglePLat} key={platform}>
+							<StyledPlattformInput
+								onChange={() =>
+									handlePlatform(platform, selectedPlat, setSelectedPlat)
+								}
+								value={platform}
+								type='checkbox'
+							/>
+							{platform}
 						</StyledCheckboxLabel>
 					))}
 				</StyledFilters>
 				<StyledGames>
-					{GAMES.map(game => (
+					{gamesFiltered.map(game => (
 						<Game key={game.id} game={game} />
 					))}
 				</StyledGames>
@@ -67,6 +77,27 @@ const GameStore = () => {
 
 const changeTogglePLat = setTogglePlat => {
 	setTogglePlat(estado => !estado);
+};
+
+//manejamos el array para saber por cuales plataformas filtrar
+const handlePlatform = (platform, selectedPlat, setSelectedPlat) => {
+	if (selectedPlat.includes(platform)) {
+		//eliminamos el valor si ya esta
+		setSelectedPlat(selectedPlat.filter(plat => plat !== platform));
+	} else {
+		//agregamos el valor filtrado al array
+		setSelectedPlat([...selectedPlat, platform]);
+	}
+};
+
+const filtergames = (games, selectedPlat) => {
+	return games.filter(game => {
+		if (selectedPlat.length === 0) {
+			return true;
+		} else {
+			return selectedPlat.includes(game.platform);
+		}
+	});
 };
 
 export default GameStore;

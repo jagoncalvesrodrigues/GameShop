@@ -4,7 +4,7 @@ export const GAMES = [
 	{
 		id: v4(),
 		title: 'Astro Bot',
-		plattform: 'PS5',
+		platform: 'PS5',
 		releaseDate: '06/09/2024',
 		price: 49.9,
 		image: '/assets/images/games/astro-bot.jpg'

@@ -10,7 +10,7 @@ const Game = ({ game }) => {
 	return (
 		<StylexBoxGame>
 			<StyledName>
-				{game.title}-{game.plattform}
+				{game.title}-{game.platform}
 			</StyledName>
 			<StyledImage src={game.image} />
 			<StyledButtonBuy $color={COLORS.blue}>
