@@ -25,7 +25,24 @@ const StyledButtonBuy = styled.button`
     width: 100%;
     border-radius: 16px;
     padding: 9px;
+    `;
+const StyledButtonInCart = styled.button`
+    background-color: ${({$color})=>$color};
+    border-style: none;
+    color:white;
+    font-weight: 700;
+    font-size: 18px;
+    width: 100%;
+    border-radius: 16px;
+    padding: 9px;
+    `;
+const StyledInCartBox = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    display: flex;
+`;
+const StyledImageTrash = styled.img`
 
 `;
-
-export {StyledButtonBuy,StyledName,StylexBoxGame,StyledImage}
+export {StyledImageTrash,StyledInCartBox,StyledButtonInCart,StyledButtonBuy,StyledName,StylexBoxGame,StyledImage}

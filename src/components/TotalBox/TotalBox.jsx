@@ -5,22 +5,22 @@ import {
 	StyledRow
 } from './totalBox.styles';
 
-const TotalBox = () => {
-	const iva = 21;
+const TotalBox = ({ totalNetPrice }) => {
+	const finalPrice = (totalNetPrice * 1.21).toFixed(2);
 
 	return (
 		<StyledOrderSummary $color={COLORS.blackbox}>
 			<StyledRow>
 				<p>Subtotal</p>
-				<p>$34</p>
+				<p>${totalNetPrice.toFixed(2)}</p>
 			</StyledRow>
 			<StyledRow>
 				<p>IVA</p>
-				<p>{iva}%</p>
+				<p>21%</p>
 			</StyledRow>
 			<StyledRow>
 				<p>Total</p>
-				<p>$454</p>
+				<p>${finalPrice}</p>
 			</StyledRow>
 			<StyledConfirmOrder>Order Items</StyledConfirmOrder>
 		</StyledOrderSummary>

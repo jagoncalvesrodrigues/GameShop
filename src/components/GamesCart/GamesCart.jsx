@@ -1,17 +1,26 @@
+import { useContext } from 'react';
 import {
 	StyledImageCart,
 	StyledInfoGame,
 	StylexBoxGameCart
 } from './gamesCart.styles';
+import { CounterContext } from '../../contexts/CounterContent';
 
-const GamesCart = () => {
+const GamesCart = ({ gameCart }) => {
+	const { deleteGame } = useContext(CounterContext);
 	return (
 		<StylexBoxGameCart>
-			<StyledImageCart src='/assets/images/games/astro-bot.jpg' />
+			<StyledImageCart src={gameCart.image} />
 			<StyledInfoGame>
-				<p>Astro Bot - PS5</p>
-				<img src='/assets/images/trash.svg' alt='' />
-				<p>$69.99</p>
+				<p>
+					{gameCart.title} - {gameCart.platform}
+				</p>
+				<img
+					onClick={() => deleteGame(gameCart.id)}
+					src='/assets/images/trash.svg'
+					alt=''
+				/>
+				<p>${gameCart.price}</p>
 			</StyledInfoGame>
 		</StylexBoxGameCart>
 	);
